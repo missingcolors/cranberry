@@ -105,6 +105,7 @@ class Cranberry_Task {
 		);
 
 		register_post_type( self::$post_type_slug, $args );
+		register_taxonomy_for_object_type( 'post_tag', self::$post_type_slug );
 	}
 
 	/**
