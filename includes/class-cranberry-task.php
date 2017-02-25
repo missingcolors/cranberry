@@ -13,7 +13,7 @@ class Cranberry_Task {
 	 *
 	 * @var string
 	 */
-	public static $post_type_slug = 'cranberry-tasks';
+	public static $post_type_slug = 'cranberry-task';
 
 	/**
 	 * The list of meta keys registered with this post type.
