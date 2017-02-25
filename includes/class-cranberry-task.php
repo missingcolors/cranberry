@@ -16,6 +16,28 @@ class Cranberry_Task {
 	public static $post_type_slug = 'cranberry-tasks';
 
 	/**
+	 * The list of meta keys registered with this post type.
+	 *
+	 * @since 0.0.1
+	 *
+	 * @var array
+	 */
+	var $meta_keys = array(
+		'c_task_start_date' => array(
+			'type' => 'string',
+			'sanitize_callback' => 'sanitize_text_field',
+			'show_in_rest' => true,
+			'single' => true,
+		),
+		'c_task_due_date' => array(
+			'type' => 'string',
+			'sanitize_callback' => 'sanitize_text_field',
+			'show_in_rest' => true,
+			'single' => true,
+		),
+	);
+
+	/**
 	 * @since 0.0.1
 	 *
 	 * @return \Cranberry_Task
@@ -35,6 +57,7 @@ class Cranberry_Task {
 	 */
 	public function setup_hooks() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
+		add_action( 'init', array( $this, 'register_meta' ) );
 	}
 
 	/**
@@ -80,5 +103,16 @@ class Cranberry_Task {
 		);
 
 		register_post_type( self::$post_type_slug, $args );
+	}
+
+	/**
+	 * Registers the meta keys assigned to the task post type.
+	 *
+	 * @since 0.0.1
+	 */
+	public function register_meta() {
+		foreach ( $this->meta_keys as $key => $args ) {
+			register_meta( 'post', $key, $args );
+		}
 	}
 }
