@@ -132,7 +132,7 @@ class Cranberry_Task {
 			return;
 		}
 
-		add_meta_box( 'cranberry-task-time', 'Time and Dates', array( $this, 'display_date_meta_box' ), $post_type, 'normal', 'default' );
+		add_meta_box( 'cranberry-task-time', 'Time and Dates', array( $this, 'display_date_meta_box' ), $post_type, 'side', 'default' );
 	}
 
 	/**
