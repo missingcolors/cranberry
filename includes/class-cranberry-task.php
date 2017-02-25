@@ -6,6 +6,13 @@ class Cranberry_Task {
 	 */
 	private static $instance;
 
+	/**
+	 * The slug used to identify the task post type.
+	 *
+	 * @since 0.0.1
+	 *
+	 * @var string
+	 */
 	public static $post_type_slug = 'cranberry-tasks';
 
 	/**
