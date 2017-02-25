@@ -58,6 +58,7 @@ class Cranberry_Task {
 	public function setup_hooks() {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_action( 'init', array( $this, 'register_meta' ) );
+		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 	}
 
 	/**
@@ -114,5 +115,33 @@ class Cranberry_Task {
 		foreach ( $this->meta_keys as $key => $args ) {
 			register_meta( 'post', $key, $args );
 		}
+	}
+
+	/**
+	 * Register the meta boxes used to capture and display task data.
+	 *
+	 * @since 0.0.1
+	 *
+	 * @param string $post_type
+	 */
+	public function add_meta_boxes( $post_type ) {
+		if ( self::$post_type_slug !== $post_type ) {
+			return;
+		}
+
+		add_meta_box( 'cranberry-task-time', 'Time and Dates', array( $this, 'display_date_meta_box' ), $post_type, 'normal', 'default' );
+	}
+
+	/**
+	 * Displays the meta box used to capture date and time information
+	 * attached to a task.
+	 *
+	 * @since 0.0.1
+	 *
+	 * @param int     $post_id
+	 * @param WP_Post $post
+	 */
+	public function display_date_meta_box( $post_id, $post ) {
+
 	}
 }
