@@ -59,6 +59,7 @@ class Cranberry_Task {
 		add_action( 'init', array( $this, 'register_post_type' ) );
 		add_action( 'init', array( $this, 'register_meta' ) );
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
+		add_action( 'add_meta_boxes', array( $this, 'remove_meta_boxes' ), 999 );
 	}
 
 	/**
@@ -130,6 +131,23 @@ class Cranberry_Task {
 		}
 
 		add_meta_box( 'cranberry-task-time', 'Time and Dates', array( $this, 'display_date_meta_box' ), $post_type, 'normal', 'default' );
+	}
+
+	/**
+	 * Removes unnecessary meta boxes from the task admin screen.
+	 *
+	 * @since 0.0.1
+	 *
+	 * @param string $post_type
+	 */
+	public function remove_meta_boxes( $post_type ) {
+		if ( self::$post_type_slug !== $post_type ) {
+			return;
+		}
+
+		remove_meta_box( 'commentstatusdiv', $post_type, 'normal' );
+		remove_meta_box( 'authordiv', $post_type, 'normal' );
+		remove_meta_box( 'slugdiv', $post_type, 'normal' );
 	}
 
 	/**
