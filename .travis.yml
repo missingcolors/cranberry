@@ -4,6 +4,7 @@ notifications:
   email:
     on_success: never
     on_failure: change
+  slack: 79bits:PbBFZ49YbmKTBlmwVnylv79D
 
 branches:
   only:
