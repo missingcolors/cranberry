@@ -60,6 +60,7 @@ class Cranberry_Task {
 		add_action( 'init', array( $this, 'register_meta' ) );
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_action( 'add_meta_boxes', array( $this, 'remove_meta_boxes' ), 999 );
+		add_action( 'save_post_' . self::$post_type_slug, array( $this, 'save_post' ), 10, 2 );
 	}
 
 	/**
@@ -157,10 +158,53 @@ class Cranberry_Task {
 	 *
 	 * @since 0.0.1
 	 *
+	 * @param WP_Post $post
+	 */
+	public function display_date_meta_box( $post ) {
+		$start_date = get_post_meta( $post->ID, 'c_task_start_date', true );
+		$due_date   = get_post_meta( $post->ID, 'c_task_due_date', true );
+
+		wp_nonce_field( 'save-task-dates', '_c_task_date_nonce' );
+		?>
+		<div class="date-entry-wrapper">
+			<label for="task-start-date">Start Date:</label>
+			<input type="text" name="task_start_date" id="task-start-date" class="date-entry" value="<?php echo esc_attr( $start_date ); ?>"/>
+		</div>
+
+		<div class="date-entry-wrapper">
+			<label for="task-due-date">Due Date:</label>
+			<input type="text" name="task_due_date" id="task-due-date" class="date-entry" value="<?php echo esc_attr( $due_date ); ?>"/>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Saves the meta data associated with a task.
+	 *
+	 * @since 0.0.1
+	 *
 	 * @param int     $post_id
 	 * @param WP_Post $post
 	 */
-	public function display_date_meta_box( $post_id, $post ) {
+	public function save_post( $post_id, $post ) {
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
 
+		if ( 'auto-draft' === $post->post_status ) {
+			return;
+		}
+
+		if ( ! isset( $_POST['_c_task_date_nonce'] ) || ! wp_verify_nonce( $_POST['_c_task_date_nonce'], 'save-task-dates' ) ) {
+			return;
+		}
+
+		if ( isset( $_POST['task_start_date'] ) ) {
+			update_post_meta( $post_id, 'c_task_start_date', $_POST['task_start_date'] );
+		}
+
+		if ( isset( $_POST['task_due_date'] ) ) {
+			update_post_meta( $post_id, 'c_task_due_date', $_POST['task_due_date'] );
+		}
 	}
 }
