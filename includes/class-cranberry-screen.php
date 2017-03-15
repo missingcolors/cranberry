@@ -25,7 +25,22 @@ class Cranberry_Screen {
 	 * @since 0.0.1
 	 */
 	public function setup_hooks() {
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_action( 'admin_menu', array( $this, 'add_screen_to_menu' ) );
+	}
+
+	/**
+	 * Enqueues the scripts used in the Cranberry dashboard.
+	 *
+	 * @since 0.0.1
+	 */
+	public function enqueue_scripts() {
+		if ( get_current_screen() && 'toplevel_page_cranberry-dashboard' === get_current_screen()->base ) {
+			wp_enqueue_script( 'react', 'https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.min.js', array(), '15.4.2', false );
+			wp_enqueue_script( 'reactdom', 'https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.min.js', array( 'react' ), '15.4.2', false );
+
+			wp_enqueue_script( 'cranberry', plugins_url( 'js/cranberry.js', __DIR__ ), array( 'react', 'reactdom' ), '0.0.1', true );
+		}
 	}
 
 	/**
