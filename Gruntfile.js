@@ -36,13 +36,36 @@ module.exports = function( grunt ) {
                     node: true     // Define globals available when running in Node.
                 }
             }
-        }
+        },
+
+		watch: {
+			styles: {
+				files: [ "css/*.css", "src/js/*.js" ],
+				tasks: [ "default" ],
+				option: {
+					livereload: 8000
+				}
+			}
+		},
+
+		connect: {
+			server: {
+				options: {
+					open: true,
+					port: 8000,
+					hostname: "localhost"
+				}
+			}
+		}
     } );
 
 	grunt.loadNpmTasks( "grunt-jscs" );
+	grunt.loadNpmTasks( "grunt-contrib-connect" );
 	grunt.loadNpmTasks( "grunt-contrib-jshint" );
+	grunt.loadNpmTasks( "grunt-contrib-watch" );
 	grunt.loadNpmTasks( "grunt-phpcs" );
 
     // Default task(s).
     grunt.registerTask( "default", [ "phpcs", "jscs", "jshint" ] );
+	grunt.registerTask( "serve", [ "connect", "watch" ] );
 };
