@@ -2,7 +2,7 @@ var path = require( "path" );
 
 module.exports = {
 	entry: "./src/js/main.js",
-	output: { path: "js/", filename: "script.js" },
+	output: { path: "js/", filename: "cranberry.js" },
 	module: {
 		loaders: [
 			{
