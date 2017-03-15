@@ -165,19 +165,51 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Profile = function (_React$Component) {
 	_inherits(Profile, _React$Component);
 
-	function Profile() {
+	function Profile(props) {
 		_classCallCheck(this, Profile);
 
-		return _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).apply(this, arguments));
+		var _this = _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).call(this, props));
+
+		_this.state = { name: '' };
+		return _this;
 	}
 
 	_createClass(Profile, [{
+		key: "componentDidMount",
+		value: function componentDidMount() {
+			var _this2 = this;
+
+			this.timerID = setTimeout(function () {
+				return _this2.getProfileName();
+			}, 50);
+		}
+	}, {
+		key: "getProfileName",
+		value: function getProfileName() {
+			var profileName = 'Stranger2';
+			var self = this;
+
+			jQuery.get("http://cranberry.dev/wp-json/wp/v2/users/" + window.userSettings.uid).done(function (result) {
+				if ('undefined' !== typeof result.name) {
+					profileName = result.name;
+				}
+
+				self.setState({ name: profileName });
+			});
+		}
+	}, {
 		key: "render",
 		value: function render() {
 			return _react2.default.createElement(
-				"span",
-				{ "class": "profile-name" },
-				"Someone's Name"
+				"div",
+				{ "class": "profile-greeting" },
+				"Hello, ",
+				_react2.default.createElement(
+					"span",
+					{ "class": "profile-name" },
+					this.state.name
+				),
+				", these are your tasks."
 			);
 		}
 	}]);
