@@ -24,5 +24,8 @@ class Cranberry {
 	 *
 	 * @since 0.0.1
 	 */
-	public function setup_hooks() {}
+	public function setup_hooks() {
+		add_action( 'after_setup_theme', 'Cranberry_Task::get_instance', 20 );
+		add_action( 'after_setup_theme', 'Cranberry_Project::get_instance', 21 );
+	}
 }
