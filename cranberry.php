@@ -17,6 +17,7 @@ if ( ! defined( 'WPINC' ) ) {
 require dirname( __FILE__ ) . '/includes/class-cranberry.php';
 require dirname( __FILE__ ) . '/includes/class-cranberry-task.php';
 require dirname( __FILE__ ) . '/includes/class-cranberry-project.php';
+require dirname( __FILE__ ) . '/includes/class-cranberry-screen.php';
 
 add_action( 'after_setup_theme', 'Cranberry' );
 /**

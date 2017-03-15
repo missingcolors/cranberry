@@ -41,3 +41,4 @@ before_script:
 script:
     - phpunit
     - grunt default
+    - npm run build
