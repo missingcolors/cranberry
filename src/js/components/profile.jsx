@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 class Profile extends React.Component {
 	constructor( props ) {
@@ -31,4 +30,4 @@ class Profile extends React.Component {
 	}
 }
 
-ReactDOM.render( <Profile />, document.getElementById( "profile-container" ) );
+export default Profile;

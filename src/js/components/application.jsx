@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 class Application extends React.Component {
 	render() {
@@ -10,4 +9,4 @@ class Application extends React.Component {
 	}
 }
 
-ReactDOM.render( <Application/>, document.getElementById( "application-container" ) );
+export default Application;

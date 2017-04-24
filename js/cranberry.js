@@ -6,9 +6,9 @@
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -74,26 +74,20 @@ module.exports = React;
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
-
-module.exports = ReactDOM;
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(1);
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -135,24 +129,24 @@ var Application = function (_React$Component) {
 	return Application;
 }(_react2.default.Component);
 
-_reactDom2.default.render(_react2.default.createElement(Application, null), document.getElementById("application-container"));
+exports.default = Application;
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(1);
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -175,7 +169,7 @@ var Profile = function (_React$Component) {
 	}
 
 	_createClass(Profile, [{
-		key: "componentDidMount",
+		key: 'componentDidMount',
 		value: function componentDidMount() {
 			var _this2 = this;
 
@@ -184,7 +178,7 @@ var Profile = function (_React$Component) {
 			}, 50);
 		}
 	}, {
-		key: "getProfileName",
+		key: 'getProfileName',
 		value: function getProfileName() {
 			var profileName = 'Stranger2';
 			var self = this;
@@ -198,18 +192,18 @@ var Profile = function (_React$Component) {
 			});
 		}
 	}, {
-		key: "render",
+		key: 'render',
 		value: function render() {
 			return _react2.default.createElement(
-				"div",
-				{ "class": "profile-greeting" },
-				"Hello, ",
+				'div',
+				{ 'class': 'profile-greeting' },
+				'Hello, ',
 				_react2.default.createElement(
-					"span",
-					{ "class": "profile-name" },
+					'span',
+					{ 'class': 'profile-name' },
 					this.state.name
 				),
-				", these are your tasks."
+				', these are your tasks.'
 			);
 		}
 	}]);
@@ -217,7 +211,13 @@ var Profile = function (_React$Component) {
 	return Profile;
 }(_react2.default.Component);
 
-_reactDom2.default.render(_react2.default.createElement(Profile, null), document.getElementById("profile-container"));
+exports.default = Profile;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = ReactDOM;
 
 /***/ }),
 /* 4 */
@@ -226,15 +226,26 @@ _reactDom2.default.render(_react2.default.createElement(Profile, null), document
 "use strict";
 
 
-var _profile = __webpack_require__(3);
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(3);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _profile = __webpack_require__(2);
 
 var _profile2 = _interopRequireDefault(_profile);
 
-var _application = __webpack_require__(2);
+var _application = __webpack_require__(1);
 
 var _application2 = _interopRequireDefault(_application);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_reactDom2.default.render(_react2.default.createElement(_profile2.default, null), document.getElementById("profile-container"));
+_reactDom2.default.render(_react2.default.createElement(_application2.default, null), document.getElementById("application-container"));
 
 /***/ })
 /******/ ]);
