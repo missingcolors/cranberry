@@ -1,5 +1,3 @@
-import React from "react";
-
 class Profile extends React.Component {
 	constructor( props ) {
 		super( props );
@@ -7,20 +5,14 @@ class Profile extends React.Component {
 	}
 
 	componentDidMount() {
-		this.timerID = setTimeout( () => this.getProfileName(), 50 );
+		setTimeout( () => this.getProfileName(), 50 );
 	}
 
 	getProfileName() {
-		var profileName = 'Stranger2';
+		var profileName = 'person';
 		var self = this;
 
-		jQuery.get( "http://cranberry.dev/wp-json/wp/v2/users/" + window.userSettings.uid ).done( function( result ) {
-			if ( 'undefined' !== typeof result.name ) {
-				profileName = result.name;
-			}
-
-			self.setState( {name: profileName} );
-		} );
+        self.setState( {name: profileName} );
 	}
 
 	render() {

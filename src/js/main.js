@@ -1,3 +1,4 @@
+import React from "react";
 import ReactDOM from "react-dom";
 import Profile from "./components/profile.jsx";
 import Application from "./components/application.jsx";
