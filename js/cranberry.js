@@ -146,7 +146,7 @@ var Profile = function (_React$Component) {
 
 		var _this = _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).call(this, props));
 
-		_this.state = { name: '' };
+		_this.state = { name: 'person' };
 		return _this;
 	}
 
@@ -162,7 +162,7 @@ var Profile = function (_React$Component) {
 	}, {
 		key: 'getProfileName',
 		value: function getProfileName() {
-			var profileName = 'person';
+			var profileName = 'Person';
 			var self = this;
 
 			self.setState({ name: profileName });
@@ -170,9 +170,13 @@ var Profile = function (_React$Component) {
 	}, {
 		key: 'render',
 		value: function render() {
+			var divStyle = {
+				"font-size": "2em"
+			};
+
 			return React.createElement(
 				'div',
-				{ 'class': 'profile-greeting' },
+				{ 'class': 'profile-greeting', style: divStyle },
 				'Hello, ',
 				React.createElement(
 					'span',

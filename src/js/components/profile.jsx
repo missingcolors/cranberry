@@ -1,7 +1,7 @@
 class Profile extends React.Component {
 	constructor( props ) {
 		super( props );
-		this.state = {name: ''};
+		this.state = {name: 'person'};
 	}
 
 	componentDidMount() {
@@ -9,14 +9,18 @@ class Profile extends React.Component {
 	}
 
 	getProfileName() {
-		var profileName = 'person';
-		var self = this;
+		const profileName = 'Person';
+		const self = this;
 
         self.setState( {name: profileName} );
 	}
 
 	render() {
-		return <div class="profile-greeting">
+		const divStyle = {
+			"font-size": "2em"
+		};
+
+		return <div class="profile-greeting" style={divStyle}>
 			Hello, <span class="profile-name">{this.state.name}</span>, these are your tasks.
 		</div>
 	}
