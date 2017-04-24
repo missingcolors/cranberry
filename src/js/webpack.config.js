@@ -1,8 +1,8 @@
-var path = require( "path" );
+const path = require( "path" );
 
 module.exports = {
 	entry: "./src/js/main.js",
-	output: { path: "js/", filename: "cranberry.js" },
+	output: { path: path.resolve(__dirname, '../../js'), filename: "cranberry.js" },
 	module: {
 		loaders: [
 			{
@@ -19,4 +19,4 @@ module.exports = {
 		"react": "React",
 		"react-dom": "ReactDOM"
 	}
-}
+};

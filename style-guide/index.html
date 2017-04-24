@@ -4,15 +4,21 @@
 	<meta charset="UTF-8">
 	<title>Cranberry Application View</title>
 
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.5.4/react.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.5.4/react-dom.min.js"></script>
 </head>
 <body>
 	<h1>Welcome to Cranberry</h1>
 
-	<div id="profile-container"></div>
-	<div id="application-container"></div>
+	<div id="profile-container">
+		Hello, <span class="profile-name">person</span>, these are your tasks.
+	</div>
+	<div id="application-container">
+		<ul>
+			<li>Initial List Item</li>
+		</ul>
+	</div>
 
-	<script src="../js/script.js"></script>
+	<script src="../js/cranberry.min.js"></script>
 </body>
 </html>

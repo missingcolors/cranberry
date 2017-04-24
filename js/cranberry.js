@@ -6,9 +6,9 @@
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -68,34 +68,16 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
-
-module.exports = React;
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports) {
-
-module.exports = ReactDOM;
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(1);
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -115,15 +97,15 @@ var Application = function (_React$Component) {
 	_createClass(Application, [{
 		key: "render",
 		value: function render() {
-			return _react2.default.createElement(
+			return React.createElement(
 				"ul",
 				null,
-				_react2.default.createElement(
+				React.createElement(
 					"li",
 					null,
 					"Task One"
 				),
-				_react2.default.createElement(
+				React.createElement(
 					"li",
 					null,
 					"Task Two"
@@ -133,28 +115,22 @@ var Application = function (_React$Component) {
 	}]);
 
 	return Application;
-}(_react2.default.Component);
+}(React.Component);
 
-_reactDom2.default.render(_react2.default.createElement(Application, null), document.getElementById("application-container"));
+exports.default = Application;
 
 /***/ }),
-/* 3 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(1);
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -170,54 +146,64 @@ var Profile = function (_React$Component) {
 
 		var _this = _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).call(this, props));
 
-		_this.state = { name: '' };
+		_this.state = { name: 'person' };
 		return _this;
 	}
 
 	_createClass(Profile, [{
-		key: "componentDidMount",
+		key: 'componentDidMount',
 		value: function componentDidMount() {
 			var _this2 = this;
 
-			this.timerID = setTimeout(function () {
+			setTimeout(function () {
 				return _this2.getProfileName();
 			}, 50);
 		}
 	}, {
-		key: "getProfileName",
+		key: 'getProfileName',
 		value: function getProfileName() {
-			var profileName = 'Stranger2';
+			var profileName = 'Person';
 			var self = this;
 
-			jQuery.get("http://cranberry.dev/wp-json/wp/v2/users/" + window.userSettings.uid).done(function (result) {
-				if ('undefined' !== typeof result.name) {
-					profileName = result.name;
-				}
-
-				self.setState({ name: profileName });
-			});
+			self.setState({ name: profileName });
 		}
 	}, {
-		key: "render",
+		key: 'render',
 		value: function render() {
-			return _react2.default.createElement(
-				"div",
-				{ "class": "profile-greeting" },
-				"Hello, ",
-				_react2.default.createElement(
-					"span",
-					{ "class": "profile-name" },
+			var divStyle = {
+				"font-size": "2em"
+			};
+
+			return React.createElement(
+				'div',
+				{ 'class': 'profile-greeting', style: divStyle },
+				'Hello, ',
+				React.createElement(
+					'span',
+					{ 'class': 'profile-name' },
 					this.state.name
 				),
-				", these are your tasks."
+				', these are your tasks.'
 			);
 		}
 	}]);
 
 	return Profile;
-}(_react2.default.Component);
+}(React.Component);
 
-_reactDom2.default.render(_react2.default.createElement(Profile, null), document.getElementById("profile-container"));
+exports.default = Profile;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+module.exports = React;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = ReactDOM;
 
 /***/ }),
 /* 4 */
@@ -226,15 +212,26 @@ _reactDom2.default.render(_react2.default.createElement(Profile, null), document
 "use strict";
 
 
-var _profile = __webpack_require__(3);
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(3);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _profile = __webpack_require__(1);
 
 var _profile2 = _interopRequireDefault(_profile);
 
-var _application = __webpack_require__(2);
+var _application = __webpack_require__(0);
 
 var _application2 = _interopRequireDefault(_application);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_reactDom2.default.render(_react2.default.createElement(_profile2.default, null), document.getElementById("profile-container"));
+_reactDom2.default.render(_react2.default.createElement(_application2.default, null), document.getElementById("application-container"));
 
 /***/ })
 /******/ ]);
