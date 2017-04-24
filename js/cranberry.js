@@ -226,10 +226,6 @@ module.exports = ReactDOM;
 "use strict";
 
 
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
 var _reactDom = __webpack_require__(3);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
@@ -244,8 +240,8 @@ var _application2 = _interopRequireDefault(_application);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(_profile2.default, null), document.getElementById("profile-container"));
-_reactDom2.default.render(_react2.default.createElement(_application2.default, null), document.getElementById("application-container"));
+_reactDom2.default.render(React.createElement(_profile2.default, null), document.getElementById("profile-container"));
+_reactDom2.default.render(React.createElement(_application2.default, null), document.getElementById("application-container"));
 
 /***/ })
 /******/ ]);
