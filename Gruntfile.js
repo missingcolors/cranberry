@@ -66,6 +66,6 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( "grunt-phpcs" );
 
     // Default task(s).
-    grunt.registerTask( "default", [ "phpcs", "jscs", "jshint" ] );
+    grunt.registerTask( "default", [ "jscs", "jshint" ] );
 	grunt.registerTask( "serve", [ "connect", "watch" ] );
 };

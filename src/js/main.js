@@ -1,2 +1,2 @@
-import Hello from "./profile.jsx";
-import World from "./application.jsx";
+import Hello from "./components/profile.jsx";
+import World from "./components/application.jsx";
