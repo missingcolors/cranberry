@@ -1,0 +1,16 @@
+body {
+    background: #f3f3f3;
+}
+
+.item-list {
+    width: 80%;
+    margin: 0 auto;
+    background: #ccc;
+}
+
+.item {
+    background: #fff;
+    width: calc( 100% - 2em);
+    padding: 1em;
+    margin-bottom: .5em;
+}
