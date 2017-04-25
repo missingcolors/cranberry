@@ -1,18 +1,7 @@
 class Profile extends React.Component {
 	constructor( props ) {
 		super( props );
-		this.state = {name: 'person'};
-	}
-
-	componentDidMount() {
-		setTimeout( () => this.getProfileName(), 50 );
-	}
-
-	getProfileName() {
-		const profileName = 'Person';
-		const self = this;
-
-        self.setState( {name: profileName} );
+		this.state = {};
 	}
 
 	render() {
@@ -20,8 +9,8 @@ class Profile extends React.Component {
 			"font-size": "2em"
 		};
 
-		return <div class="profile-greeting" style={divStyle}>
-			Hello, <span class="profile-name">{this.state.name}</span>, these are your tasks.
+		return <div className="profile-image" style={divStyle}>
+			<img src="" alt={this.props.owner} />
 		</div>
 	}
 }

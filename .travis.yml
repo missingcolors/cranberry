@@ -1,4 +1,9 @@
+sudo: false
 language: php
+cache:
+  apt: true
+  directories:
+    - node_modules
 
 notifications:
   email:
@@ -21,24 +26,13 @@ install:
     - npm install
 
 before_script:
-    - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
-    - export PATH="$HOME/.composer/vendor/bin:$PATH"
-    - |
-      if [[ ${TRAVIS_PHP_VERSION:0:2} == "7." ]]; then
-        composer global require "phpunit/phpunit=5.7.*"
-      else
-        composer global require "phpunit/phpunit=4.8.*"
-      fi
-    - composer install
     - npm install -g npm
     - npm install -g grunt-cli
     - npm install
     - npm prune
-    - phpenv versions
     - npm --version
     - node --version
 
 script:
-    - phpunit
     - grunt default
     - npm run build

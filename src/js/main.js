@@ -1,7 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Profile from "./components/profile.jsx";
-import Application from "./components/application.jsx";
+import ItemList from "./components/itemlist.jsx"
 
-ReactDOM.render( <Profile />, document.getElementById( "profile-container" ) );
-ReactDOM.render( <Application/>, document.getElementById( "application-container" ) );
+ReactDOM.render( <ItemList />, document.getElementById( "root" ) );
